@@ -1,15 +1,18 @@
-# texlive-ja-devcontainer-template
+# master-thesis-template
 
-VS Code Remote Developmentの機能を用いて、LaTeX環境を容易に構築するサンプルコードです。
+VS Code Remote Developmentの機能を用いて、片山研の修士論文執筆環境を容易に構築するテンプレートです。
 
-[![](https://images.microbadger.com/badges/image/korosuke613/ubuntu-texlive-ja-devcontainer.svg)](https://microbadger.com/images/korosuke613/ubuntu-texlive-ja-devcontainer "Get your own image badge on microbadger.com")
+## build
+
+```bash
+latexmk
+```
+
+`MasterPaper.pdf`という実行ファイルができているはず。
 
 
-Dockerイメージは、[ubuntu-texlive-ja](https://hub.docker.com/r/korosuke613/ubuntu-texlive-ja)を利用しています。
-
-(**Dockerが必要です**)
-
-## setup
+## optional
+VS Codeのremote container機能を使えば、楽楽執筆が可能です。
 
 1. `git clone https://github.com/korosuke613/texlive-ja-devcontainer-template.git`
 2. VS Codeで`texlive-ja-devcontainer-template`を開く。
@@ -19,10 +22,3 @@ Dockerイメージは、[ubuntu-texlive-ja](https://hub.docker.com/r/korosuke613
 6. ワークスペースが開いたら、terminalを開き、`latexmk sample.tex`を実行する。
 7. 上手くコンパイルできたらsetup完了！
 
-## build
-
-```bash
-latexmk sample.tex
-```
-
-`sample.pdf`という実行ファイルができているはず。
