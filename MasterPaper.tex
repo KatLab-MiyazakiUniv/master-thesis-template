@@ -40,7 +40,7 @@
 % 今時jarticleやjbook使ってる人いる？時代はjsarticleかjsbookだよ
 % ついでに言うと、uplatexってのはplatexの上位互換、これを使わないなんて旧世代だよね
 %
-\documentclass[uplatex, report, a4j, 10pt]{jsbook}
+\documentclass[uplatex, report, a4j, 10pt, dvipdfmx]{jsbook}
 
 
 %%
@@ -48,15 +48,14 @@
 %
 \usepackage{packages/miyazaki-u-paper}   % 宮崎大学工学部の卒論の基本（片山先生作）を、僕がちょっと書き換えちゃった（テヘッ
 \usepackage{enumitem}           % enumerate？古い古い
-\usepackage[dvipdfmx]{graphicx} % 当然dvipdfmなんて使ってないよね
-\usepackage[dvipdfmx]{color}    % listingsを使うときにはこれも必須、dvipdfmxを変えちゃうとgraphicxのdvipdfmxも変わるよ
-\usepackage{listings, packages/jlisting} % コードを埋め込むなら必須
+\usepackage[dvipdfmx]{graphicx, color} % 当然dvipdfmなんて使ってないよね
+% \usepackage[dvipdfmx]{color}    % listingsを使うときにはこれも必須、dvipdfmxを変えちゃうとgraphicxのdvipdfmxも変わるよ
+\usepackage{listings} % コードを埋め込むなら必須
 \usepackage{txfonts}            % フォントといえばやっぱりtxfonts、今はnewtxってのもあるらしい
 \usepackage{verbatim}           % コメントアウトしてくれる便利なプリアンブルが使える \begin{comment} ... \end{comment}
 \usepackage[hdivide={21mm, , 21mm}, vdivide={30mm, , 25mm}]{geometry} % スタイルを少し変えたくても\hoffset, \voffsetは使わないでね
 %\RequirePackage[l2tabu, orthodox]{nag} % これを入れると、古いコマンドを警告してくれる！なお完全には消せなかった模様
-
-%%
+%
 % マクロの定義
 %
 \newcommand{\tool}{TOOL}
@@ -91,6 +90,59 @@
   showstringspaces=false,%空行の表示
 %  breakatwhitespace=true,
 %  tabsize=5,
+}
+\usepackage[dvipsnames]{xcolor}
+
+% Kotlinのコードのハイライト
+% 参考サイト
+% https://github.com/cansik/kotlin-latex-listing
+\lstdefinelanguage{Kotlin}{
+  comment=[l]{//},
+  commentstyle={\color{gray}\ttfamily},
+  emph={delegate, filter, first, firstOrNull, forEach, lazy, map, mapNotNull, println, return@},
+  emphstyle={\color{OrangeRed}},
+  identifierstyle=\color{black},
+  keywords={abstract, actual, as, as?, break, by, class, companion, continue, data, do, dynamic, else, enum, expect, false, final, for, fun, get, if, import, in, interface, internal, is, null, object, override, package, private, public, return, set, super, suspend, this, throw, true, try, typealias, val, var, vararg, when, where, while},
+  keywordstyle={\color{NavyBlue}\bfseries},
+  morecomment=[s]{/*}{*/},
+  morestring=[b]",
+  morestring=[s]{"""*}{*"""},
+  ndkeywords={@Deprecated, @JvmField, @JvmName, @JvmOverloads, @JvmStatic, @JvmSynthetic, Array, Byte, Double, Float, Int, Integer, Iterable, Long, Runnable, Short, String},
+  ndkeywordstyle={\color{BurntOrange}\bfseries},
+  sensitive=true,
+  stringstyle={\color{ForestGreen}\ttfamily},
+}
+
+% Swiftのコードのハイライト
+% 参考サイト
+% https://gist.github.com/chriseidhof/18dbc1c4eef919eab2c7
+\lstdefinelanguage{swift}
+{
+  morekeywords={
+    func,if,then,else,for,in,while,do,switch,case,default,where,break,continue,fallthrough,return,
+    typealias,struct,class,enum,protocol,var,func,let,get,set,willSet,didSet,inout,init,deinit,extension,
+    subscript,prefix,operator,infix,postfix,precedence,associativity,left,right,none,convenience,dynamic,
+    final,lazy,mutating,nonmutating,optional,override,required,static,unowned,safe,weak,internal,
+    private,public,is,as,self,unsafe,dynamicType,true,false,nil,Type,Protocol,
+  },
+  morecomment=[l]{//}, % l is for line comment
+  morecomment=[s]{/*}{*/}, % s is for start and end delimiter
+  morestring=[b]" % defines that strings are enclosed in double quotes
+}
+
+\definecolor{keyword}{HTML}{BA2CA3}
+\definecolor{string}{HTML}{D12F1B}
+\definecolor{comment}{HTML}{008400}
+
+\lstset{
+  language=swift,
+  basicstyle=\ttfamily,
+  showstringspaces=false, % lets spaces in strings appear as real spaces
+  columns=fixed,
+  keepspaces=true,
+  keywordstyle=\color{keyword},
+  stringstyle=\color{string},
+  commentstyle=\color{comment},
 }
 
 %%
@@ -145,6 +197,21 @@
 \chapter{研究の準備}\label{cha:Preparation}
 
 本章では、\tool{}を実装するにあたり、必要となる前提知識を説明する。
+\section{Kotlinの参考コード}
+
+\begin{lstlisting}[caption={Kotlinの参考コード}, label={lst:example1}, language=Kotlin]
+// this is a simple code listing:
+println("Hello, World")
+\end{lstlisting}
+
+\section{Swiftの参考コード}
+
+\begin{lstlisting}[caption={Swiftの参考コード}, label={lst:example2}, language=swift]
+// this is a simple code listing:
+@IBAction func backButton(_ sender: Any) {
+  performSegue(withIdentifier: "toViewController", sender: nil)
+}
+\end{lstlisting}
 
 
 
@@ -183,11 +250,19 @@
 本章では、\tool{}の実装について説明する。
 \tool{}の構造とデータ遷移を、図\ref{fig:toolStructure}に示す。
 
-\begin{figure}[tp]
+\begin{figure}[t]
 	\centering
-	\includegraphics[keepaspectratio, width=160mm]{figs/retussStructure}
+	\includegraphics[width=.8\linewidth]{./figs/breadboard.eps}
 	\caption{\tool{}の構造とデータ遷移}
 	\label{fig:toolStructure}
+\end{figure}
+
+\begin{figure}[tp]
+  \begin{center}
+  \includegraphics[width=160mm]{./figs/retussStructure.png}
+	\caption{\tool{}の構造とデータ遷移}
+	\label{fig:toolStructure2}
+\end{center}
 \end{figure}
 
 % 適用例
