@@ -40,7 +40,7 @@
 % 今時jarticleやjbook使ってる人いる？時代はjsarticleかjsbookだよ
 % ついでに言うと、uplatexってのはplatexの上位互換、これを使わないなんて旧世代だよね
 %
-\documentclass[uplatex, report, a4j, 10pt]{jsbook}
+\documentclass[uplatex, report, a4j, 10pt, dvipdfmx]{jsbook}
 
 
 %%
@@ -48,50 +48,20 @@
 %
 \usepackage{packages/miyazaki-u-paper}   % 宮崎大学工学部の卒論の基本（片山先生作）を、僕がちょっと書き換えちゃった（テヘッ
 \usepackage{enumitem}           % enumerate？古い古い
-\usepackage[dvipdfmx]{graphicx} % 当然dvipdfmなんて使ってないよね
-\usepackage[dvipdfmx]{color}    % listingsを使うときにはこれも必須、dvipdfmxを変えちゃうとgraphicxのdvipdfmxも変わるよ
+\usepackage[dvipdfmx]{graphicx, color} % 当然dvipdfmなんて使ってないよね
+% \usepackage[dvipdfmx]{color}    % listingsを使うときにはこれも必須、dvipdfmxを変えちゃうとgraphicxのdvipdfmxも変わるよ
 \usepackage{listings, packages/jlisting} % コードを埋め込むなら必須
 \usepackage{txfonts}            % フォントといえばやっぱりtxfonts、今はnewtxってのもあるらしい
 \usepackage{verbatim}           % コメントアウトしてくれる便利なプリアンブルが使える \begin{comment} ... \end{comment}
 \usepackage[hdivide={21mm, , 21mm}, vdivide={30mm, , 25mm}]{geometry} % スタイルを少し変えたくても\hoffset, \voffsetは使わないでね
 %\RequirePackage[l2tabu, orthodox]{nag} % これを入れると、古いコマンドを警告してくれる！なお完全には消せなかった模様
-
-%%
+%
 % マクロの定義
 %
 \newcommand{\tool}{TOOL}
 \newcommand{\toolFullName}{TOOL: Optimize Operation Language}
 
-\renewcommand{\lstlistingname}{コード}
-\lstset{
-  language={Java},
-  frame=tlBR,%フレーム線の指定，上右下左の順，大文字は二重線
-%  frameround=tttt,%角の指定，右上|右下|左下|左上の順，tは丸角，fは四角
-  framesep=5pt,%本文からframeまでの間隔
-  framerule=.2pt,%線の太さ
-%  rulecolor={\color[gray]},%線の色
-%  backgroundcolor={\color[gray]{.9}},%背景色の指定
-  basicstyle={\scriptsize\ttfamily \color[gray]{.15}},%書体の指定，この場合は7ptのタイプライタ体
-  identifierstyle={\ttfamily},%識別子の書体
-  keywordstyle={\ttfamily \color[cmyk]{0,1,0,0}},%言語ワードの書体
-  stringstyle={\scriptsize\ttfamily \color[rgb]{0,0,1}},%文字列リテラルの書体
-  commentstyle={\itshape \color[cmyk]{1,0,1,0}},%コメントの書体
-  numberstyle={\scriptsize},%行番号の書式
-  stepnumber=1,%行番号のステップ間隔
-  numbers=left,%行番号の位置
-  numbersep=1em,%本文との間隔
-  breaklines=true,%改行の設定
-  xleftmargin=0zw,
-  xrightmargin=0zw,
-  columns=[l]{fullflexible},
-  lineskip=-0.5zw,
-  morecomment={[s][{\color[cmyk]{1,0,0,0}}]{/**}{*/}},
-  floatplacement=t,
-  classoffset=1,
-  showstringspaces=false,%空行の表示
-%  breakatwhitespace=true,
-%  tabsize=5,
-}
+\usepackage{languages}   % 言語設定ファイル
 
 %%
 % miyazaki-u-paper.sty用設定値
@@ -145,6 +115,32 @@
 \chapter{研究の準備}\label{cha:Preparation}
 
 本章では、\tool{}を実装するにあたり、必要となる前提知識を説明する。
+\section{Javaの参考コード}
+
+\begin{lstlisting}[caption={Javaの参考コード}, label={lst:example_java}, language=Java]
+// this is a simple code listing:
+public class HelloWorld{
+   public static void main(String[] args){
+     System.out.println("Hello World!!");
+   }
+}
+\end{lstlisting}
+
+\section{Kotlinの参考コード}
+
+\begin{lstlisting}[caption={Kotlinの参考コード}, label={lst:example_kotlin}, language=Kotlin]
+// this is a simple code listing:
+println("Hello, World")
+\end{lstlisting}
+
+\section{Swiftの参考コード}
+
+\begin{lstlisting}[caption={Swiftの参考コード}, label={lst:example_swift}, language=swift]
+// this is a simple code listing:
+@IBAction func backButton(_ sender: Any) {
+  performSegue(withIdentifier: "toViewController", sender: nil)
+}
+\end{lstlisting}
 
 
 
@@ -183,11 +179,19 @@
 本章では、\tool{}の実装について説明する。
 \tool{}の構造とデータ遷移を、図\ref{fig:toolStructure}に示す。
 
-\begin{figure}[tp]
+\begin{figure}[t]
 	\centering
-	\includegraphics[keepaspectratio, width=160mm]{figs/retussStructure}
+	\includegraphics[width=.8\linewidth]{./figs/breadboard.eps}
 	\caption{\tool{}の構造とデータ遷移}
 	\label{fig:toolStructure}
+\end{figure}
+
+\begin{figure}[tp]
+  \begin{center}
+  \includegraphics[keepaspectratio, width=160mm]{./figs/retussStructure.png}
+	\caption{\tool{}の構造とデータ遷移}
+	\label{fig:toolStructure2}
+\end{center}
 \end{figure}
 
 % 適用例
