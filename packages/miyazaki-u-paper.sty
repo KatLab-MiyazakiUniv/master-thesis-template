@@ -293,13 +293,9 @@
 \def\chapter{\clearpage \thispagestyle{plain} \global\@topnum\z@
 \@afterindenttrue \secdef\@chapter\@schapter} 
 
-\def\acknowledgment{\clearpage\typeout{\@acknowledgmentname}
- \thispagestyle{plain}
- \global\@topnum\z@ \@afterindenttrue
- \addcontentsline{toc}{countChapter}{\@acknowledgmentname}
- \refstepcounter{countChapter}
+\def\acknowledgment{\chapter*{\@acknowledgmentname}
+\typeout{\@acknowledgmentname}\addcontentsline{toc}{chapter}{\@acknowledgmentname}
  \@chaptermark{\@acknowledgmentname}
- \@makeschapterhead{\@acknowledgmentname}
  \@afterheading}
 
 \def\appendix{\par
