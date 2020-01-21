@@ -128,33 +128,42 @@
 \chapter{研究の準備}\label{cha:Preparation}
 
 本章では、\tool{}を実装するにあたり、必要となる前提知識を説明する\cite{hirakoba, sqbok, vdmj}。
-\section{Javaの参考コード}
 
-\begin{lstlisting}[caption={Javaの参考コード}, label={lst:example_java}, language=Java]
-// this is a simple code listing:
-public class HelloWorld{
-   public static void main(String[] args){
-     System.out.println("Hello World!!");
-   }
-}
-\end{lstlisting}
+\section{Javaの参考コード}
+\begin{figure}[tp]
+  \begin{lstlisting}[caption={Javaの参考コード}, label={lst:example_java}, language=Java]
+  // this is a simple code listing:
+  public class HelloWorld{
+     public static void main(String[] args){
+       System.out.println("Hello World!!");
+     }
+  }
+  \end{lstlisting}
+  \end{figure}
+  
+コード\ref{lst:example_java}にJavaの参考コードを示す。
 
 \section{Kotlinの参考コード}
 
+\begin{figure}[tp]
 \begin{lstlisting}[caption={Kotlinの参考コード}, label={lst:example_kotlin}, language=Kotlin]
 // this is a simple code listing:
 println("Hello, World")
 \end{lstlisting}
+\end{figure}
+コード\ref{lst:example_kotlin}にKotlinの参考コードを示す。
 
 \section{Swiftの参考コード}
 
+\begin{figure}[tp]
 \begin{lstlisting}[caption={Swiftの参考コード}, label={lst:example_swift}, language=swift]
 // this is a simple code listing:
 @IBAction func backButton(_ sender: Any) {
   performSegue(withIdentifier: "toViewController", sender: nil)
 }
 \end{lstlisting}
-
+\end{figure}
+コード\ref{lst:example_swift}にSwiftの参考コードを示す。
 
 
 % 外観
