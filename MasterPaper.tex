@@ -57,8 +57,17 @@
 \usepackage[dvipdfmx]{hyperref} % リンクを付けてくれる。
 \usepackage{pxjahyper}          % リンクを付けてくれる（日本語）
 \usepackage[htt]{hyphenat}      % textttをハイフネーションしてくれる。
-
 %\RequirePackage[l2tabu, orthodox]{nag} % これを入れると、古いコマンドを警告してくれる！なお完全には消せなかった模様
+
+%%
+% font周りのwarningを消す。
+% https://www.semipol.de/2018/06/12/latex-best-practices.html#filtering-warnings
+%
+\usepackage{silence}% http://ctan.org/pkg/silence
+\WarningFilter{latexfont}{Font shape}
+\WarningFilter{latexfont}{Some font shapes}
+
+
 %
 % マクロの定義
 %

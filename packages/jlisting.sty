@@ -1,3 +1,6 @@
+\usepackage{silence}% http://ctan.org/pkg/silence
+\WarningFilter{latex}{You have requested package}
+
 \NeedsTeXFormat{LaTeX2e}
 \def\filedate{2006/02/20}
 \def\fileversion{0.2}
@@ -89,7 +92,7 @@
    \ifeof\lst@inputfile\else
       \expandafter\lst@get@filecontents@loop
    \fi}
-%%% [‚±‚Ìˆ—‚àC‘Š“–‹­ˆø‚Å‚·D]
+%%% [ï¿½ï¿½ï¿½Ìï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Å‚ï¿½ï¿½D]
 \def\lst@BOLGobble{%
    \ifnum\lst@gobble>\z@
       \@tempcnta\lst@gobble\relax
@@ -129,15 +132,15 @@
    \fi
 }
 %
-%    \begin{C³–€}{1.3}
-% ‚¿‚å‚Á‚Æ‚µ‚½C³
+%    \begin{ï¿½Cï¿½ï¿½ï¿½ï¿½ï¿½ï¿½}{1.3}
+% ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ‚ï¿½ï¿½ï¿½ï¿½Cï¿½ï¿½
 \gdef\lst@breakProcessOther#1{\lst@ProcessOther#1}
-% ƒ\[ƒXƒR[ƒh–ÚŸ‚É‚¨‚¯‚é•¶š‚Æ”Ô†‚Ì‹ó‚«
+% ï¿½\ï¿½[ï¿½Xï¿½Rï¿½[ï¿½hï¿½Úï¿½ï¿½É‚ï¿½ï¿½ï¿½ï¿½é•¶ï¿½ï¿½ï¿½Æ”Ôï¿½ï¿½Ì‹ï¿½
 \let \l@lstlisting = \l@figure
-% ƒLƒƒƒvƒVƒ‡ƒ“‚Æƒ\[ƒXƒR[ƒh–ÚŸ‚É‘Î‚·‚é“ú–{Œê‘Î‰
-\def\lstlistingname{ƒ\[ƒXƒR[ƒh}
-\def\lstlistlistingname{ƒ\[ƒXƒR[ƒh–ÚŸ}
-%    \end{C³–€}
+% ï¿½Lï¿½ï¿½ï¿½vï¿½Vï¿½ï¿½ï¿½ï¿½ï¿½Æƒ\ï¿½[ï¿½Xï¿½Rï¿½[ï¿½hï¿½Úï¿½ï¿½É‘Î‚ï¿½ï¿½ï¿½ï¿½ï¿½{ï¿½ï¿½Î‰ï¿½
+\def\lstlistingname{ï¿½\ï¿½[ï¿½Xï¿½Rï¿½[ï¿½h}
+\def\lstlistlistingname{ï¿½\ï¿½[ï¿½Xï¿½Rï¿½[ï¿½hï¿½Úï¿½}
+%    \end{ï¿½Cï¿½ï¿½ï¿½ï¿½ï¿½ï¿½}
 \endinput
 % 
 %#!platex
@@ -187,10 +190,10 @@
 \maketitle
 %\IfDvipdfmxDef
 
-\section{‚¿‚å‚Á‚Æ‚µ‚½à–¾}% Short Description
+\section{ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ‚ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½}% Short Description
  
-‰œ‘º°•F‚ÌŒf¦”Â‚Ìu”Ä—p“I‚È•‚“®‘Ìv‚Æ‚¢‚¤ˆê˜A‚Ì‘‚«‚İ‚©‚ç
-“]Ú‚µ‚Ü‚µ‚½B
+ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Fï¿½ï¿½ï¿½ÌŒfï¿½ï¿½ï¿½Â‚Ìuï¿½Ä—pï¿½Iï¿½È•ï¿½ï¿½ï¿½ï¿½Ìvï¿½Æ‚ï¿½ï¿½ï¿½ï¿½ï¿½Aï¿½Ìï¿½ï¿½ï¿½ï¿½ï¿½ï¿½İ‚ï¿½ï¿½ï¿½
+ï¿½]ï¿½Ú‚ï¿½ï¿½Ü‚ï¿½ï¿½ï¿½ï¿½B
 
 \begin{quote}
  \url{http://http://cise.edu.mie-u.ac.jp/~okumura/texfaq/qa/21172.html}\\
@@ -199,18 +202,18 @@
  \url{http://http://cise.edu.mie-u.ac.jp/~okumura/texfaq/qa/21197.html}
 \end{quote}
 
- Copyright ‚Í‹g‰i“N”ü‚É‚ ‚é‚Ì‚¾‚Æv‚¢‚Ü‚·D
+ Copyright ï¿½Í‹gï¿½iï¿½Nï¿½ï¿½ï¿½ï¿½ï¿½É‚ï¿½ï¿½ï¿½Ì‚ï¿½ï¿½Ævï¿½ï¿½ï¿½Ü‚ï¿½ï¿½D
  
-\section{XV—š—ğ}% ChageLogs
+\section{ï¿½Xï¿½Vï¿½ï¿½ï¿½ï¿½}% ChageLogs
 
 \begin{description}
  \item[ver.~0.1 (2004/03/24)]
-   ‚Æ‚è‚ ‚¦‚¸ŒöŠJD
+   ï¿½Æ‚è‚ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Jï¿½D
  \item[ver.~0.2 (2006/02/20)] 
-   \verb|\lst@breakProcessOther| –½—ß‚Ì’è‹`‚Ì’Ç‰ÁD
+   \verb|\lst@breakProcessOther| ï¿½ï¿½ï¿½ß‚Ì’ï¿½`ï¿½Ì’Ç‰ï¿½ï¿½D
 \end{description}
 
-\section{ƒ\[ƒXƒR[ƒh}
+\section{ï¿½\ï¿½[ï¿½Xï¿½Rï¿½[ï¿½h}
 \par\narrowbaselines
 \verbatiminput{jlisting.sty}
 \end{document}
