@@ -54,6 +54,10 @@
 \usepackage{txfonts}            % フォントといえばやっぱりtxfonts、今はnewtxってのもあるらしい
 \usepackage{verbatim}           % コメントアウトしてくれる便利なプリアンブルが使える \begin{comment} ... \end{comment}
 \usepackage[hdivide={21mm, , 21mm}, vdivide={30mm, , 25mm}]{geometry} % スタイルを少し変えたくても\hoffset, \voffsetは使わないでね
+\usepackage[dvipdfmx]{hyperref} % リンクを付けてくれる。
+\usepackage{pxjahyper}          % リンクを付けてくれる（日本語）
+\usepackage[htt]{hyphenat}      % textttをハイフネーションしてくれる。
+
 %\RequirePackage[l2tabu, orthodox]{nag} % これを入れると、古いコマンドを警告してくれる！なお完全には消せなかった模様
 %
 % マクロの定義
@@ -114,7 +118,7 @@
 % 研究の準備
 \chapter{研究の準備}\label{cha:Preparation}
 
-本章では、\tool{}を実装するにあたり、必要となる前提知識を説明する。
+本章では、\tool{}を実装するにあたり、必要となる前提知識を説明する\cite{hirakoba, sqbok, vdmj}。
 \section{Javaの参考コード}
 
 \begin{lstlisting}[caption={Javaの参考コード}, label={lst:example_java}, language=Java]
@@ -214,12 +218,11 @@ println("Hello, World")
 %%
 % 参考文献
 %
-\begin{thebibliography}{99}
-  % 森氏の成果物
-  \bibitem{ICAROB2019} Keisuke Mori, Tetsuro Katayama, Yoshihiro Kita, Hisaaki Yamaba, Kentaro Aburada, and Naonobu Okazaki: ``Development of Library Fescue Extracting Elements of Attributes and Operations of Class Diagram in UML,'' The 2019 International Conference on Artificial Life and Robotics (ICAROB2019), pp. 165--168, 2019
-  
-  \bibitem{Fescue} GitHub: ``Fescue: Feature Elements Section of Class in UML Extraction,'' https://github.com/Morichan/Fescue (最終アクセス 2019/01/25)
-  \end{thebibliography}
+%%
+% 参考文献
+%
+\bibliography{master} %hoge.bibから拡張子を外した名前
+\bibliographystyle{junsrt} %参考文献出力スタイル
 
 %%
 % 付録

@@ -6,5 +6,10 @@
 *.log
 *.pdf
 *.toc
+*.synctex
+*.synctex(busy)
+*.out
+*.blg
+*.bbl
 
 .DS_Store
